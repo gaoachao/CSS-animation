@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .typing {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .typing-effect {
+            width: 22ch;  /*字母数量 用ch表示0的宽度 配合overflow:hidden可以让steps的每一帧展出一个字符*/
+            white-space: nowrap;  /*不换行*/
+            overflow: hidden;   /*把超出部分隐藏*/
+            border-right: 3px solid; /*不要对这个效果基本没影响*/
+            font-family: monospace; /*设置等宽字体*/
+            font-size: 2em;  
+            animation: typing 2s steps(22), effect .5s step-end infinite alternate;
+            /* typing表示打字类型 2s打完 总共22步 
+             * effect让光标持续跳动 0.5秒出现0.5秒消失（每1秒跳一下）
+             * step-end表示在每一帧的最后 infinite表示一直跳动下去
+             * 如果真的要一一对应应该让effect为2/22秒，这样光标跳动一下打一个字
+             * alternate动画交替反向运行，反向运行时，动画按步后退 */
+        }   
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+        }
+        /*使typing这个div从0宽到设定宽度(字母数+ch)*/
+
+        @keyframes effect {
+            50% {
+                 border-color: transparent; 
+            }
+        }
+        /*设置effect这个div中的动画*/
+    </style>
+</head>
+
+<body>
+    <div class="typing">
+        <div class="typing-effect">Typing effect for text</div>
+    </div>
+</body>
+
+</html>
