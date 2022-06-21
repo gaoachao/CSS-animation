@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+*{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-family: 'Oswald',sans-serif;
+}
+body{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	min-height:100vh;
+	background-color: #434750;
+}
+ul{
+	position: relative;
+	/*绕着Y轴旋转-15度*/
+	transform:skewY(-15deg);
+}
+ul li{
+	position:relative;
+	list-style: none;
+	width:200px;
+	background-color: #3e3f46;
+	padding: 15px;
+	z-index:var(--i);
+	transition:0.5s;
+}
+ul li:hover{
+	background-color: #33a3ee;
+	transform: translateX(-50px);
+}
+ul li:hover::before{
+	background-color: #33a3ee;
+}
+ul li::before{
+	content:'';
+	position:absolute;
+	top:0;
+	left:-40px;
+	width:40px;
+	height:100%;
+	background-color:#2e3133;
+	/*设定旋转轴*/
+	transform-origin:right;
+	transform: skewY(45deg);
+	transition:0.5s;
+}
+ul li:hover::after{
+	background-color: #33a3ee;
+}
+ul li::after{
+	content:'';
+	position:absolute;
+	top:-40px;;
+	left:0;
+	width:100%;
+	height:40px;
+	background-color:#35383e;
+	/*设定旋转轴*/
+	transform-origin:bottom;
+	transform: skewX(45deg);
+	transition:0.5s;
+}
+ul li a{
+	/*去掉超链接的文本修饰*/
+	text-decoration: none;
+	color:#999;
+	display:block;
+	/*所有字符被强制转换为大写*/
+	text-transform: uppercase;
+	transition:0.5s;
+	letter-spacing: 0.05em;
+}
+ul li:hover a{
+	color:#fff;
+}
+ul li:last-child::after{
+	box-shadow: -120px 120px 20px rgba(0,0,0,0.25);
+}
